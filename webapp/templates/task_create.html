@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+
+<h1>Create Task</h1>
+
+<form action="/task/add/" method="post">
+    {% csrf_token %}
+
+    <label>Title:</label><br/>
+    <input type="text" name="title"/><br/>
+    <label>Description:</label><br/>
+    <input type="text" name="description"/><br/>
+
+    <label>status:</label><br/>
+    <select name="status" id="">
+        {% for status in status_choices %}
+            <option value="{{ status.0 }}">{{ status.1 }}</option>
+        {% endfor %}
+    </select>
+    <br/>
+
+    <input type="submit" value="Send"/>
+</form>
+
+<a href="/">На главную</a>
+</body>
+</html>
