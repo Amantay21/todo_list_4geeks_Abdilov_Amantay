@@ -1,4 +1,3 @@
-from django.shortcuts import render
 
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -23,8 +22,7 @@ def create_task_view(request):
         task = Task.objects.create(
             title=request.POST.get('title'),
             description=request.POST.get('description'),
-            completed=request.POST.get('completed'),
-            date_of_completion=request.POST.get('date_of_completion')
+            completed=request.POST.get('completed')
         )
 
         return redirect('task_view', pk=task.pk)
@@ -38,7 +36,6 @@ def update_task_view(request, pk):
         task.title = request.POST.get('title')
         task.description = request.POST.get('description')
         task.competed = request.POST.get('competed')
-        task.date_of_completion = request.POST.get('date_of_completion')
         task.save()
         return redirect('task_view', pk=task.pk)
 
